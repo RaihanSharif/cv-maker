@@ -1,9 +1,12 @@
 // render the list of education buttons
 
+import { useState } from "react";
+
 function EducationListEdit({ data, onClick }) {
   // something to track the currently selected education entry
   // make the button of the currently selected education a different colour
-  const selectItem = 2;
+  const [selectedEdu, setSelectedEdu] = useState(0);
+
   console.log(data);
   return (
     <section className="education-btns">
@@ -13,11 +16,18 @@ function EducationListEdit({ data, onClick }) {
             <li key={item.id}>
               {/* passing an anonymous function like this allows passing of both
               the event object and item id */}
-              <button key={item.id} onClick={(e) => onClick(e, item.id)}>
+              <button
+                key={item.id}
+                onClick={(e) => {
+                  // selectItem = item.id; // this becomes a state
+                  setSelectedEdu(item.id);
+                  onClick(e, item.id);
+                }}
+              >
                 {item.course}. Item ID: {item.id}
               </button>
               {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
-              {selectItem === item.id && (
+              {selectedEdu === item.id && (
                 <form>
                   <input
                     type="text"

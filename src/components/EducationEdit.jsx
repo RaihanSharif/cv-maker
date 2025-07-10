@@ -5,7 +5,7 @@
 
 // render the list of education buttons
 
-function EducationListEdit({ data }) {
+function EducationListEdit({ data, onClick }) {
   console.log(data);
   return (
     <section className="education-btns">
@@ -13,7 +13,11 @@ function EducationListEdit({ data }) {
         {data.map((item) => {
           return (
             <li key={item.id}>
-              <button>{item.course}</button>
+              {/* passing an anonymous function like this allows passing of both
+              the event object and item id */}
+              <button key={item.id} onClick={(e) => onClick(e, item.id)}>
+                {item.course}. Item ID: {item.id}
+              </button>
             </li>
           );
         })}

@@ -42,8 +42,8 @@ const dummyEduData = [
 ];
 
 function App() {
-  // const testArr = ["kings", "UCL", "Oxford"];
   const [personalData, setPersonalData] = useState("");
+  console.log(dummyEduData);
 
   // passed to PersonalInfoEdit component
   function handlePersonalOnChange(e) {
@@ -51,10 +51,18 @@ function App() {
     setPersonalData((prev) => ({ ...prev, [name]: value }));
   }
 
+  function handleEducationUpdate(event, key) {
+    // TODO: delete these two lines later, they show that I can
+    // fetch the id of the education item associated with the button
+    // as well as the event that's triggered on button click
+    alert(key);
+    alert(event.type);
+  }
+
   return (
     <>
       <Sidebar personalData={personalData} onChange={handlePersonalOnChange} />
-      <EducationListEdit data={dummyEduData} />
+      <EducationListEdit data={dummyEduData} onClick={handleEducationUpdate} />
 
       <div style={{ display: "flex", gap: "1rem", padding: "10px" }}>
         <p>Name: {personalData.name}</p>

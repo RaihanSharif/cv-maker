@@ -1,11 +1,9 @@
-// TODO: education input fields
-// info:
-//      school name, course, start and end dates of study
-// has a check box to say if currently in the course.
-
 // render the list of education buttons
 
 function EducationListEdit({ data, onClick }) {
+  // something to track the currently selected education entry
+  // make the button of the currently selected education a different colour
+  const selectItem = 2;
   console.log(data);
   return (
     <section className="education-btns">
@@ -18,6 +16,18 @@ function EducationListEdit({ data, onClick }) {
               <button key={item.id} onClick={(e) => onClick(e, item.id)}>
                 {item.course}. Item ID: {item.id}
               </button>
+              {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
+              {selectItem === item.id && (
+                <form>
+                  <input
+                    type="text"
+                    // the defaultValue is used to pre-fill input, then on change the value gets
+                    // changed, then on form submit the value, not the default value gets submitted.
+                    defaultValue={item.course}
+                    onChange={(e) => e.target.value}
+                  ></input>
+                </form>
+              )}
             </li>
           );
         })}

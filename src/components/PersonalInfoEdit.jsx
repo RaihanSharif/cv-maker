@@ -13,6 +13,7 @@ export default function PersonalInfoEdit({ personalData, onChange }) {
             id="name"
             value={personalData.name}
             placeholder="e.g. John Smith"
+            autoComplete="name"
             onChange={onChange}
           />
         </label>
@@ -24,6 +25,7 @@ export default function PersonalInfoEdit({ personalData, onChange }) {
             id="email"
             value={personalData.email}
             placeholder="e.g. johnsmith@gmail.com"
+            autoComplete="email"
             onChange={onChange}
           />
         </label>
@@ -35,6 +37,7 @@ export default function PersonalInfoEdit({ personalData, onChange }) {
             id="phone"
             value={personalData.phone}
             placeholder="e.g. 07563442456"
+            autoComplete="tel"
             onChange={onChange}
           />
         </label>
@@ -46,6 +49,7 @@ export default function PersonalInfoEdit({ personalData, onChange }) {
             id="website"
             value={personalData.website}
             placeholder="johnsmith.com"
+            autoComplete="website"
             onChange={onChange}
           />
         </label>

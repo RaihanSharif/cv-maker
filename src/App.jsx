@@ -55,8 +55,8 @@ function App() {
     // TODO: delete these two lines later, they show that I can
     // fetch the id of the education item associated with the button
     // as well as the event that's triggered on button click
-    alert(key);
-    alert(event.type);
+    console.log(key);
+    console.log(event.type);
   }
 
   return (

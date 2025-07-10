@@ -5,7 +5,7 @@ import { useState } from "react";
 function EducationListEdit({ data, onClick }) {
   // something to track the currently selected education entry
   // make the button of the currently selected education a different colour
-  const [selectedEdu, setSelectedEdu] = useState(0);
+  const [selectedEdu, setSelectedEdu] = useState(null);
 
   console.log(data);
   return (
@@ -19,9 +19,11 @@ function EducationListEdit({ data, onClick }) {
               <button
                 key={item.id}
                 onClick={(e) => {
-                  // selectItem = item.id; // this becomes a state
                   setSelectedEdu(item.id);
                   onClick(e, item.id);
+                  if (selectedEdu == item.id) {
+                    setSelectedEdu(null);
+                  }
                 }}
               >
                 {item.course}. Item ID: {item.id}

@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 
-function EducationListEdit({ data, onClick }) {
+function EducationListEdit({ eduData, onClick }) {
   // something to track the currently selected education entry
   // make the button of the currently selected education a different colour
   const [selectedEdu, setSelectedEdu] = useState(null);
 
-  console.log(data);
+  console.log(eduData);
   return (
     <section className="education-btns">
       <ul>
-        {data.map((item) => {
+        {eduData.map((item) => {
           return (
             <li key={item.id}>
               {/* passing an anonymous function like this allows passing of both

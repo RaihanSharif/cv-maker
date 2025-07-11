@@ -43,6 +43,7 @@ const dummyEduData = [
 
 function App() {
   const [personalData, setPersonalData] = useState("");
+  const [educationList, setEducationList] = useState(dummyEduData);
   console.log(dummyEduData);
 
   // passed to PersonalInfoEdit component
@@ -51,18 +52,23 @@ function App() {
     setPersonalData((prev) => ({ ...prev, [name]: value }));
   }
 
+  // education button click -> show form -> submit form -> call this
   function handleEducationUpdate(event, key) {
     // TODO: delete these two lines later, they show that I can
     // fetch the id of the education item associated with the button
     // as well as the event that's triggered on button click
     console.log(key);
     console.log(event.type);
+    setEducationList(dummyEduData);
   }
 
   return (
     <>
-      <Sidebar personalData={personalData} onChange={handlePersonalOnChange} />
-      <EducationListEdit data={dummyEduData} onClick={handleEducationUpdate} />
+      <Sidebar personalData={personalData} onChange={() => alert("asdf")} />
+      <EducationListEdit
+        eduData={educationList}
+        onClick={handleEducationUpdate}
+      />
 
       <div style={{ display: "flex", gap: "1rem", padding: "10px" }}>
         <p>Name: {personalData.name}</p>

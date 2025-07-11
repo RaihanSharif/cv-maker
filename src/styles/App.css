@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+/* TODO: delete this later and do style properly */
+li {
+  list-style: none;
+}

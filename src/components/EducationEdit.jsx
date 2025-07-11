@@ -28,7 +28,7 @@ function EducationListEdit({ eduData, onClick }) {
               </button>
               {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
               {selectedEdu === item.id && (
-                <EducationItemEdit educationItem={item} />
+                <EducationItemEdit educationItem={item} onSubmit={onClick} />
               )}
             </li>
           );
@@ -38,10 +38,13 @@ function EducationListEdit({ eduData, onClick }) {
   );
 }
 
-function EducationItemEdit({ educationItem }) {
+function EducationItemEdit({ educationItem, onSubmit }) {
   return (
     <section>
-      <form className="education-edit-form">
+      <form
+        className="education-edit-form"
+        onSubmit={(e) => onSubmit(e, educationItem.id)}
+      >
         <label htmlFor="school">
           School/University name:{" "}
           <input
@@ -68,8 +71,8 @@ function EducationItemEdit({ educationItem }) {
           Grade:{" "}
           <input
             type="text"
-            name="course"
-            id="course"
+            name="grade"
+            id="grade"
             autoComplete="none"
             defaultValue={educationItem.grade}
           />
@@ -81,7 +84,7 @@ function EducationItemEdit({ educationItem }) {
             type="month"
             name="start-date"
             id="start-date"
-            autoComplete="month"
+            autoComplete="date"
             defaultValue={educationItem.start.toISOString().slice(0, 7)}
           />
         </label>
@@ -91,7 +94,7 @@ function EducationItemEdit({ educationItem }) {
             type="month"
             name="end-date"
             id="end-date"
-            autoComplete="month"
+            autoComplete="date"
             defaultValue={educationItem.end.toISOString().slice(0, 7)}
           />
         </label>

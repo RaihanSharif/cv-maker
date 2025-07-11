@@ -104,6 +104,7 @@ function EducationItemEdit({ educationItem, onSubmit }) {
             defaultValue={educationItem.description}
           />
         </label>
+        <input type="reset"></input>
         <input type="submit"></input>
       </form>
     </section>

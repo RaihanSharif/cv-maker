@@ -85,7 +85,7 @@ function EducationItemEdit({ educationItem, onSubmit }) {
             name="start-date"
             id="start-date"
             autoComplete="date"
-            defaultValue={educationItem.start.toISOString().slice(0, 7)}
+            defaultValue={educationItem.start}
           />
         </label>
         <label htmlFor="end-date">
@@ -95,7 +95,7 @@ function EducationItemEdit({ educationItem, onSubmit }) {
             name="end-date"
             id="end-date"
             autoComplete="date"
-            defaultValue={educationItem.end.toISOString().slice(0, 7)}
+            defaultValue={educationItem.end}
           />
         </label>
         <label htmlFor="description">

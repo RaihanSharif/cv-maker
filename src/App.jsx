@@ -17,8 +17,8 @@ const dummyEduData = [
     school: "King's college",
     course: "computer science",
     grade: "diploma",
-    start: new Date("2016-09"),
-    end: new Date("2020-06"),
+    start: "2016-09",
+    end: "2020-06",
     description: "did not complete the course",
   },
   {
@@ -26,8 +26,8 @@ const dummyEduData = [
     school: "UCL",
     course: "History",
     grade: "First",
-    start: new Date("2020-09"),
-    end: new Date("2023-06"),
+    start: "2020-09",
+    end: "2023-06",
     description: "excellente!",
   },
   {
@@ -35,8 +35,8 @@ const dummyEduData = [
     school: "Imperial",
     course: "War Studies",
     grade: "second",
-    start: new Date("2018-09"),
-    end: new Date("2021-06"),
+    start: "2018-09",
+    end: "2021-06",
     description: "Ayy caramba!",
   },
 ];

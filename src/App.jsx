@@ -64,7 +64,7 @@ function App() {
 
   return (
     <>
-      <Sidebar personalData={personalData} onChange={() => alert("asdf")} />
+      <Sidebar personalData={personalData} onChange={handlePersonalOnChange} />
       <EducationListEdit
         eduData={educationList}
         onClick={handleEducationUpdate}

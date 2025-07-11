@@ -4,13 +4,6 @@ import Sidebar from "./components/Sidebar";
 import PersonalInfoEdit from "./components/PersonalInfoEdit";
 import { EducationListEdit } from "./components/EducationEdit";
 
-// const dummyPersonalData = {
-//   name: "Raihan Sharif",
-//   email: "raihan@gmail.com",
-//   phone: "03050603",
-//   website: "raihan.com",
-// };
-
 const dummyEduData = [
   {
     id: 0,
@@ -44,7 +37,6 @@ const dummyEduData = [
 function App() {
   const [personalData, setPersonalData] = useState("");
   const [educationList, setEducationList] = useState(dummyEduData);
-  console.log(dummyEduData);
 
   // passed to PersonalInfoEdit component
   function handlePersonalOnChange(e) {
@@ -57,9 +49,16 @@ function App() {
     // TODO: delete these two lines later, they show that I can
     // fetch the id of the education item associated with the button
     // as well as the event that's triggered on button click
-    console.log(key);
-    console.log(event.type);
-    setEducationList(dummyEduData);
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const eduObj = Object.fromEntries(formData);
+    eduObj.id = key;
+
+    console.log(eduObj);
+    const eduIndex = educationList.findIndex((item) => item.id === key);
+
+    setEducationList(educationList.toSpliced(eduIndex, 1, eduObj));
   }
 
   return (

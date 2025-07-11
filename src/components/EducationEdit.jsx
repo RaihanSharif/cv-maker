@@ -4,8 +4,6 @@ function EducationListEdit({ eduData, onClick }) {
   // something to track the currently selected education entry
   // make the button of the currently selected education a different colour
   const [selectedEdu, setSelectedEdu] = useState(null);
-
-  console.log(eduData);
   return (
     <section className="education-btns">
       <ul>
@@ -16,9 +14,8 @@ function EducationListEdit({ eduData, onClick }) {
               the event object and item id */}
               <button
                 key={item.id}
-                onClick={(e) => {
+                onClick={() => {
                   setSelectedEdu(item.id);
-                  onClick(e, item.id); // TODO: remove this. Will be on the education form.
                   if (selectedEdu == item.id) {
                     setSelectedEdu(null);
                   }
@@ -78,22 +75,22 @@ function EducationItemEdit({ educationItem, onSubmit }) {
           />
         </label>
 
-        <label htmlFor="start-date">
+        <label htmlFor="start">
           Start date:{" "}
           <input
             type="month"
-            name="start-date"
-            id="start-date"
+            name="start"
+            id="start"
             autoComplete="date"
             defaultValue={educationItem.start}
           />
         </label>
-        <label htmlFor="end-date">
+        <label htmlFor="end">
           End date:{" "}
           <input
             type="month"
-            name="end-date"
-            id="end-date"
+            name="end"
+            id="end"
             autoComplete="date"
             defaultValue={educationItem.end}
           />

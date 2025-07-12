@@ -1,6 +1,6 @@
 import PersonalInfoEdit from "./PersonalInfoEdit";
 
-// TODO: a sidebar containing all the different input fields
+// TODO: a sidebar containing all the different input sections
 
 export default function Sidebar({ personalData, onChange }) {
   return (

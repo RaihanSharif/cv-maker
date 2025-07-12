@@ -35,7 +35,12 @@ const dummyEduData = [
 ];
 
 function App() {
-  const [personalData, setPersonalData] = useState("");
+  const [personalData, setPersonalData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    website: "",
+  });
   const [educationList, setEducationList] = useState(dummyEduData);
 
   // passed to PersonalInfoEdit component

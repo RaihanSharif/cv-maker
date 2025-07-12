@@ -7,7 +7,7 @@ import { EducationListEdit } from "./components/EducationEdit";
 const dummyEduData = [
   {
     id: 0,
-    school: "King's college",
+    // school: "King's college",
     course: "computer science",
     grade: "diploma",
     start: "2016-09",
@@ -46,9 +46,6 @@ function App() {
 
   // education button click -> show form -> submit form -> call this
   function handleEducationUpdate(event, key) {
-    // TODO: delete these two lines later, they show that I can
-    // fetch the id of the education item associated with the button
-    // as well as the event that's triggered on button click
     event.preventDefault();
     const formData = new FormData(event.target);
     const eduObj = Object.fromEntries(formData);
@@ -69,6 +66,8 @@ function App() {
     setEducationList(educationList.toSpliced(indexOfDelItem, 1));
   }
 
+  // function handleEducationAdd() {}
+
   return (
     <>
       <Sidebar personalData={personalData} onChange={handlePersonalOnChange} />
@@ -76,6 +75,7 @@ function App() {
         eduData={educationList}
         onUpdate={handleEducationUpdate}
         onDelete={handleEducationDelete}
+        // onAdd={handleEducationAdd}
       />
 
       <div style={{ display: "flex", gap: "1rem", padding: "10px" }}>

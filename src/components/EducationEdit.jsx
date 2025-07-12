@@ -34,6 +34,18 @@ function EducationListEdit({ eduData, onUpdate, onDelete }) {
             </li>
           );
         })}
+        <li>
+          <button
+            className="add-education-btn"
+            onClick={() => {
+              // render an empty form by nesting a EducationItemEdit component
+              // for its educationItem, give it nothing
+              // for its onSubmit, give it the onAdd prop
+            }}
+          >
+            Add education
+          </button>
+        </li>
       </ul>
     </section>
   );
@@ -53,7 +65,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="school"
             id="school"
             autoComplete="organization"
-            defaultValue={educationItem.school}
+            defaultValue={educationItem?.school}
           />
         </label>
 
@@ -64,7 +76,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="course"
             id="course"
             autoComplete="none"
-            defaultValue={educationItem.course}
+            defaultValue={educationItem?.course}
           />
         </label>
 

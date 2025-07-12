@@ -27,7 +27,7 @@ function EducationListEdit({ eduData, onUpdate, onDelete }) {
               {selectedEdu === item.id && (
                 <EducationItemEdit
                   educationItem={item}
-                  onSubmit={onUpdate}
+                  onSubmit={(e) => onUpdate(e, item.id)}
                   onDelete={onDelete}
                 />
               )}
@@ -52,12 +52,20 @@ function EducationListEdit({ eduData, onUpdate, onDelete }) {
 }
 
 function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
+  // destructuring the educationItem like this allows default values to be blank if
+  /// no educationItem props is present
+  const {
+    school = "",
+    course = "",
+    grade = "",
+    start = "",
+    end = "",
+    description = "",
+  } = educationItem;
+
   return (
     <section>
-      <form
-        className="education-edit-form"
-        onSubmit={(e) => onSubmit(e, educationItem.id)}
-      >
+      <form className="education-edit-form" onSubmit={onSubmit}>
         <label htmlFor="school">
           School/University name:{" "}
           <input
@@ -65,7 +73,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="school"
             id="school"
             autoComplete="organization"
-            defaultValue={educationItem?.school}
+            defaultValue={school}
           />
         </label>
 
@@ -76,7 +84,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="course"
             id="course"
             autoComplete="none"
-            defaultValue={educationItem?.course}
+            defaultValue={course}
           />
         </label>
 
@@ -87,7 +95,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="grade"
             id="grade"
             autoComplete="none"
-            defaultValue={educationItem.grade}
+            defaultValue={grade}
           />
         </label>
 
@@ -98,7 +106,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="start"
             id="start"
             autoComplete="date"
-            defaultValue={educationItem.start}
+            defaultValue={start}
           />
         </label>
         <label htmlFor="end">
@@ -108,7 +116,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="end"
             id="end"
             autoComplete="date"
-            defaultValue={educationItem.end}
+            defaultValue={end}
           />
         </label>
         <label htmlFor="description">
@@ -117,7 +125,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="description"
             id="description"
             autoComplete="none"
-            defaultValue={educationItem.description}
+            defaultValue={description}
           />
         </label>
         <button type="reset">Reset</button>

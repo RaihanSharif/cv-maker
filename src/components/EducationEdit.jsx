@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function EducationListEdit({ eduData, onClick, onDelete }) {
+function EducationListEdit({ eduData, onUpdate, onDelete }) {
   // something to track the currently selected education entry
   // make the button of the currently selected education a different colour
   const [selectedEdu, setSelectedEdu] = useState(null);
@@ -27,7 +27,7 @@ function EducationListEdit({ eduData, onClick, onDelete }) {
               {selectedEdu === item.id && (
                 <EducationItemEdit
                   educationItem={item}
-                  onSubmit={onClick}
+                  onSubmit={onUpdate}
                   onDelete={onDelete}
                 />
               )}

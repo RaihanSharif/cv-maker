@@ -74,7 +74,7 @@ function App() {
       <Sidebar personalData={personalData} onChange={handlePersonalOnChange} />
       <EducationListEdit
         eduData={educationList}
-        onClick={handleEducationUpdate}
+        onUpdate={handleEducationUpdate}
         onDelete={handleEducationDelete}
       />
 

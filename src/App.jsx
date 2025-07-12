@@ -6,7 +6,7 @@ import { EducationListEdit } from "./components/EducationEdit";
 
 const dummyEduData = [
   {
-    id: 0,
+    id: crypto.randomUUID(),
     // school: "King's college",
     course: "computer science",
     grade: "diploma",
@@ -15,7 +15,7 @@ const dummyEduData = [
     description: "did not complete the course",
   },
   {
-    id: 1,
+    id: crypto.randomUUID(),
     school: "UCL",
     course: "History",
     grade: "First",
@@ -24,7 +24,7 @@ const dummyEduData = [
     description: "excellente!",
   },
   {
-    id: 2,
+    id: crypto.randomUUID(),
     school: "Imperial",
     course: "War Studies",
     grade: "second",
@@ -71,8 +71,16 @@ function App() {
     setEducationList(educationList.toSpliced(indexOfDelItem, 1));
   }
 
-  function handleEducationAdd() {
-    alert("woop woop!");
+  function handleEducationAdd(e) {
+    e.preventDefault();
+    const uuid = crypto.randomUUID(); //works
+
+    const formData = new FormData(e.target); // works
+    console.log(formData);
+    const newEdu = Object.fromEntries(formData);
+    newEdu.id = uuid;
+    console.log(newEdu);
+    setEducationList((prev) => [...prev, newEdu]);
   }
 
   return (

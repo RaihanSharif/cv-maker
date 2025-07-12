@@ -22,7 +22,7 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
                   }
                 }}
               >
-                {item.course} id: {item.id}
+                {item.course} id: {item.id.slice(0, 3)}
               </button>
               {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
               {selectedEdu === item.id && (
@@ -44,7 +44,14 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
           >
             {showEmptyEduForm.toString()}
           </button>
-          {showEmptyEduForm && <EducationItemEdit onSubmit={onAdd} />}
+          {showEmptyEduForm && (
+            <EducationItemEdit
+              onSubmit={(e) => {
+                setShowEmptyEduForm(false);
+                onAdd(e);
+              }}
+            />
+          )}
         </li>
       </ul>
     </section>
@@ -73,8 +80,8 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="school"
             id="school"
             autoComplete="organization"
-            required="true"
             defaultValue={educationItem?.school}
+            required
           />
         </label>
 
@@ -85,8 +92,8 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="course"
             id="course"
             autoComplete="none"
-            required="true"
             defaultValue={educationItem?.course}
+            required
           />
         </label>
 

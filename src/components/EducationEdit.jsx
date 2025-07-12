@@ -125,6 +125,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="end"
             id="end"
             autoComplete="date"
+            max="2027-07" // could make this programatic
             defaultValue={educationItem?.end}
           />
         </label>

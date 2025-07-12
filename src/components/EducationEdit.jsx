@@ -42,7 +42,7 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
               setShowEmptyEduForm(!showEmptyEduForm);
             }}
           >
-            {showEmptyEduForm.toString()}
+            Add Education
           </button>
           {showEmptyEduForm && (
             <EducationItemEdit

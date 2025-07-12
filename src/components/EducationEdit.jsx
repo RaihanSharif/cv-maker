@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function EducationListEdit({ eduData, onClick }) {
+function EducationListEdit({ eduData, onClick, onDelete }) {
   // something to track the currently selected education entry
   // make the button of the currently selected education a different colour
   const [selectedEdu, setSelectedEdu] = useState(null);
@@ -21,11 +21,15 @@ function EducationListEdit({ eduData, onClick }) {
                   }
                 }}
               >
-                {item.course}. Item ID: {item.id}
+                {item.course} id: {item.id}
               </button>
               {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
               {selectedEdu === item.id && (
-                <EducationItemEdit educationItem={item} onSubmit={onClick} />
+                <EducationItemEdit
+                  educationItem={item}
+                  onSubmit={onClick}
+                  onDelete={onDelete}
+                />
               )}
             </li>
           );
@@ -35,7 +39,7 @@ function EducationListEdit({ eduData, onClick }) {
   );
 }
 
-function EducationItemEdit({ educationItem, onSubmit }) {
+function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
   return (
     <section>
       <form
@@ -104,8 +108,20 @@ function EducationItemEdit({ educationItem, onSubmit }) {
             defaultValue={educationItem.description}
           />
         </label>
-        <input type="reset"></input>
-        <input type="submit"></input>
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+        <button
+          className="del-education-item"
+          onClick={(e) => {
+            console.log(
+              `in delete button: deleting item id: ${educationItem.id}`
+            );
+            e.preventDefault();
+            onDelete(educationItem.id);
+          }}
+        >
+          Delete
+        </button>
       </form>
     </section>
   );

@@ -50,15 +50,23 @@ function App() {
     // fetch the id of the education item associated with the button
     // as well as the event that's triggered on button click
     event.preventDefault();
-
     const formData = new FormData(event.target);
     const eduObj = Object.fromEntries(formData);
     eduObj.id = key;
-
-    console.log(eduObj);
     const eduIndex = educationList.findIndex((item) => item.id === key);
 
     setEducationList(educationList.toSpliced(eduIndex, 1, eduObj));
+  }
+
+  function handleEducationDelete(objectId) {
+    const indexOfDelItem = educationList.findIndex(
+      (item) => item.id === objectId
+    );
+    console.log(
+      `in delete handler inside App.jsx: index of item to deleted: ${indexOfDelItem}`
+    );
+
+    setEducationList(educationList.toSpliced(indexOfDelItem, 1));
   }
 
   return (
@@ -67,6 +75,7 @@ function App() {
       <EducationListEdit
         eduData={educationList}
         onClick={handleEducationUpdate}
+        onDelete={handleEducationDelete}
       />
 
       <div style={{ display: "flex", gap: "1rem", padding: "10px" }}>

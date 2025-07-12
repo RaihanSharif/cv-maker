@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-function EducationListEdit({ eduData, onUpdate, onDelete }) {
+function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
   // something to track the currently selected education entry
   // make the button of the currently selected education a different colour
   const [selectedEdu, setSelectedEdu] = useState(null);
+  const [showEmptyEduForm, setShowEmptyEduForm] = useState(false);
   return (
     <section className="education-btns">
       <ul>
@@ -38,13 +39,12 @@ function EducationListEdit({ eduData, onUpdate, onDelete }) {
           <button
             className="add-education-btn"
             onClick={() => {
-              // render an empty form by nesting a EducationItemEdit component
-              // for its educationItem, give it nothing
-              // for its onSubmit, give it the onAdd prop
+              setShowEmptyEduForm(!showEmptyEduForm);
             }}
           >
-            Add education
+            {showEmptyEduForm.toString()}
           </button>
+          {showEmptyEduForm && <EducationItemEdit onSubmit={onAdd} />}
         </li>
       </ul>
     </section>
@@ -54,14 +54,14 @@ function EducationListEdit({ eduData, onUpdate, onDelete }) {
 function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
   // destructuring the educationItem like this allows default values to be blank if
   /// no educationItem props is present
-  const {
-    school = "",
-    course = "",
-    grade = "",
-    start = "",
-    end = "",
-    description = "",
-  } = educationItem;
+  // const {
+  //   school = "",
+  //   course = "",
+  //   grade = "",
+  //   start = "",
+  //   end = "",
+  //   description = "",
+  // } = educationItem;
 
   return (
     <section>
@@ -73,7 +73,8 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="school"
             id="school"
             autoComplete="organization"
-            defaultValue={school}
+            required="true"
+            defaultValue={educationItem?.school}
           />
         </label>
 
@@ -84,7 +85,8 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="course"
             id="course"
             autoComplete="none"
-            defaultValue={course}
+            required="true"
+            defaultValue={educationItem?.course}
           />
         </label>
 
@@ -95,7 +97,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="grade"
             id="grade"
             autoComplete="none"
-            defaultValue={grade}
+            defaultValue={educationItem?.grade}
           />
         </label>
 
@@ -106,7 +108,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="start"
             id="start"
             autoComplete="date"
-            defaultValue={start}
+            defaultValue={educationItem?.start}
           />
         </label>
         <label htmlFor="end">
@@ -116,7 +118,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="end"
             id="end"
             autoComplete="date"
-            defaultValue={end}
+            defaultValue={educationItem?.end}
           />
         </label>
         <label htmlFor="description">
@@ -125,23 +127,26 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
             name="description"
             id="description"
             autoComplete="none"
-            defaultValue={description}
+            defaultValue={educationItem?.description}
           />
         </label>
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
-        <button
-          className="del-education-item"
-          onClick={(e) => {
-            console.log(
-              `in delete button: deleting item id: ${educationItem.id}`
-            );
-            e.preventDefault();
-            onDelete(educationItem.id);
-          }}
-        >
-          Delete
-        </button>
+
+        {onDelete && (
+          <button
+            className="del-education-item"
+            onClick={(e) => {
+              console.log(
+                `in delete button: deleting item id: ${educationItem?.id}`
+              );
+              e.preventDefault();
+              onDelete(educationItem?.id);
+            }}
+          >
+            Delete
+          </button>
+        )}
       </form>
     </section>
   );

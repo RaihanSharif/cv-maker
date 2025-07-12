@@ -71,7 +71,9 @@ function App() {
     setEducationList(educationList.toSpliced(indexOfDelItem, 1));
   }
 
-  // function handleEducationAdd() {}
+  function handleEducationAdd() {
+    alert("woop woop!");
+  }
 
   return (
     <>
@@ -80,7 +82,7 @@ function App() {
         eduData={educationList}
         onUpdate={handleEducationUpdate}
         onDelete={handleEducationDelete}
-        // onAdd={handleEducationAdd}
+        onAdd={handleEducationAdd}
       />
 
       <div style={{ display: "flex", gap: "1rem", padding: "10px" }}>

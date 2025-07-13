@@ -94,6 +94,10 @@ function App() {
   return (
     <main className="app">
       <section className="sidebar">
+        <section className="export">
+          <button>Download PDF</button>
+          <button>print</button>
+        </section>
         <PersonalInfoEdit
           personalData={personalData}
           onChange={handlePersonalOnChange}

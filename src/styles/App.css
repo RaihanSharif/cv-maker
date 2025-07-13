@@ -13,6 +13,22 @@
   gap: 2rem;
 }
 
+.sidebar section {
+  border: 1px solid darkgrey;
+  border-radius: 10px;
+  background-color: #242424;
+  padding: 1rem;
+}
+
+.export {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* preview styles */
+.preview {
+  padding: 1rem;
+}
 /* .logo {
   height: 6em;
   padding: 1.5em;
@@ -38,6 +54,26 @@
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #e8e8e8;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+  .sidebar section,
+  .preview {
+    background-color: #ffff;
+    border: none;
+    box-shadow: 1px 1px 1px 0px rgb(12 12 12 / 32%);
+    padding: 1rem;
   }
 }
 

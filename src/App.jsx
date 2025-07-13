@@ -88,10 +88,10 @@ const dummyWorkData = [
 
 function App() {
   const [personalData, setPersonalData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    website: "",
+    name: "Razz",
+    email: "Shazzman",
+    phone: "0345-123-2341",
+    website: "noobdev.com",
   });
   const [educationList, setEducationList] = useState(dummyEduData);
   const [workList, setWorkList] = useState(dummyWorkData);
@@ -164,7 +164,7 @@ function App() {
       <section className="sidebar">
         <section className="export sidebar-section">
           <button>Download PDF</button>
-          <button>print</button>
+          <button onClick={() => window.print()}>print</button>
         </section>
         <PersonalInfoEdit
           personalData={personalData}
@@ -184,7 +184,7 @@ function App() {
           onAdd={handleWorkAdd}
         />
       </section>
-      <section className="preview">
+      <section className="preview" id="preview">
         <PreviewHeader {...personalData} />
         <EducationPreview eduData={educationList} />
       </section>

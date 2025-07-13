@@ -136,6 +136,10 @@ textarea {
     box-shadow: 1px 1px 1px 0px rgb(12 12 12 / 32%);
     padding: 1rem;
   }
+  .active {
+    border-color: #646cff;
+    background-color: lightblue;
+  }
 }
 
 /* TODO: delete this later and do style properly */

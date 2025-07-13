@@ -7,6 +7,7 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
   const [showEmptyEduForm, setShowEmptyEduForm] = useState(false);
   return (
     <section className="education-btns">
+      <h2>Education</h2>
       <ul>
         {eduData.map((item) => {
           return (
@@ -71,92 +72,90 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
   // } = educationItem;
 
   return (
-    <section>
-      <form className="education-edit-form" onSubmit={onSubmit}>
-        <label htmlFor="school">
-          School/University name:{" "}
-          <input
-            type="text"
-            name="school"
-            id="school"
-            autoComplete="organization"
-            defaultValue={educationItem?.school}
-            required
-          />
-        </label>
+    <form className="education-edit-form" onSubmit={onSubmit}>
+      <label htmlFor="school">
+        School/University name:{" "}
+        <input
+          type="text"
+          name="school"
+          id="school"
+          autoComplete="organization"
+          defaultValue={educationItem?.school}
+          required
+        />
+      </label>
 
-        <label htmlFor="course">
-          Course:{" "}
-          <input
-            type="text"
-            name="course"
-            id="course"
-            autoComplete="none"
-            defaultValue={educationItem?.course}
-            required
-          />
-        </label>
+      <label htmlFor="course">
+        Course:{" "}
+        <input
+          type="text"
+          name="course"
+          id="course"
+          autoComplete="none"
+          defaultValue={educationItem?.course}
+          required
+        />
+      </label>
 
-        <label htmlFor="grade">
-          Grade:{" "}
-          <input
-            type="text"
-            name="grade"
-            id="grade"
-            autoComplete="none"
-            defaultValue={educationItem?.grade}
-          />
-        </label>
+      <label htmlFor="grade">
+        Grade:{" "}
+        <input
+          type="text"
+          name="grade"
+          id="grade"
+          autoComplete="none"
+          defaultValue={educationItem?.grade}
+        />
+      </label>
 
-        <label htmlFor="start">
-          Start date:{" "}
-          <input
-            type="month"
-            name="start"
-            id="start"
-            autoComplete="date"
-            defaultValue={educationItem?.start}
-          />
-        </label>
-        <label htmlFor="end">
-          End date:{" "}
-          <input
-            type="month"
-            name="end"
-            id="end"
-            autoComplete="date"
-            max="2027-07" // could make this programatic
-            defaultValue={educationItem?.end}
-          />
-        </label>
-        <label htmlFor="description">
-          Description:{" "}
-          <textarea
-            name="description"
-            id="description"
-            autoComplete="none"
-            defaultValue={educationItem?.description}
-          />
-        </label>
-        <button type="reset">Reset</button>
-        <button type="submit">Submit</button>
+      <label htmlFor="start">
+        Start date:{" "}
+        <input
+          type="month"
+          name="start"
+          id="start"
+          autoComplete="date"
+          defaultValue={educationItem?.start}
+        />
+      </label>
+      <label htmlFor="end">
+        End date:{" "}
+        <input
+          type="month"
+          name="end"
+          id="end"
+          autoComplete="date"
+          max="2027-07" // could make this programatic
+          defaultValue={educationItem?.end}
+        />
+      </label>
+      <label htmlFor="description">
+        Description:{" "}
+        <textarea
+          name="description"
+          id="description"
+          autoComplete="none"
+          defaultValue={educationItem?.description}
+        />
+      </label>
+      <button type="reset">Reset</button>
+      <button type="submit">Submit</button>
 
-        {onDelete && (
-          <button
-            className="del-education-item"
-            onClick={(e) => {
-              console.log(
-                `in delete button: deleting item id: ${educationItem?.id}`
-              );
-              e.preventDefault();
-              onDelete(educationItem?.id);
-            }}
-          >
-            Delete
-          </button>
-        )}
-      </form>
-    </section>
+      {onDelete && (
+        <button
+          className="del-education-item"
+          onClick={(e) => {
+            console.log(
+              `in delete button: deleting item id: ${educationItem?.id}`
+            );
+            e.preventDefault();
+            onDelete(educationItem?.id);
+          }}
+        >
+          Delete
+        </button>
+      )}
+    </form>
   );
 }
 

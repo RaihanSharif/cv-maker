@@ -1,18 +1,30 @@
 import { useState } from "react";
 import "./styles/App.css";
-import Sidebar from "./components/Sidebar";
 import PersonalInfoEdit from "./components/PersonalInfoEdit";
 import { EducationListEdit } from "./components/EducationEdit";
+import PreviewHeader from "./components/PreviewHeader";
+import EducationPreview from "./components/EducationPreview";
 
 const dummyEduData = [
   {
     id: crypto.randomUUID(),
-    // school: "King's college",
+    school: "King's college",
     course: "computer science",
     grade: "diploma",
     start: "2016-09",
     end: "2020-06",
-    description: "did not complete the course",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+    Quisque eros velit, ultricies vel lectus vel, tempor ornare enim. \
+    Vivamus non sapien odio. Interdum et malesuada fames ac ante ipsum \
+    primis in faucibus. Praesent mattis magna tincidunt, consequat diam \
+    sed, elementum augue. Nam ut leo sapien. Duis mi metus, sodales hendrerit \
+    ligula vel, maximus facilisis nisl. Phasellus quis nibh egestas, aliquet \
+    enim non, suscipit sem. In sit amet leo quis nisl luctus pulvinar rutrum \
+    at erat. Suspendisse sit amet nisl condimentum, vehicula massa imperdiet, \
+    condimentum massa. Etiam iaculis elit quis felis ullamcorper gravida. \
+    Quisque fermentum velit vel ligula tincidunt, eget ullamcorper ipsum \
+    pharetra. Mauris sagittis hendrerit odio. Praesent a tristique diam.",
   },
   {
     id: crypto.randomUUID(),
@@ -64,10 +76,6 @@ function App() {
     const indexOfDelItem = educationList.findIndex(
       (item) => item.id === objectId
     );
-    console.log(
-      `in delete handler inside App.jsx: index of item to deleted: ${indexOfDelItem}`
-    );
-
     setEducationList(educationList.toSpliced(indexOfDelItem, 1));
   }
 
@@ -84,22 +92,24 @@ function App() {
   }
 
   return (
-    <>
-      <Sidebar personalData={personalData} onChange={handlePersonalOnChange} />
-      <EducationListEdit
-        eduData={educationList}
-        onUpdate={handleEducationUpdate}
-        onDelete={handleEducationDelete}
-        onAdd={handleEducationAdd}
-      />
-
-      <div style={{ display: "flex", gap: "1rem", padding: "10px" }}>
-        <p>Name: {personalData.name}</p>
-        <p>Email: {personalData.email}</p>
-        <p>Phone: {personalData.phone}</p>
-        <p>Website: {personalData.website}</p>
-      </div>
-    </>
+    <main className="app">
+      <section className="sidebar">
+        <PersonalInfoEdit
+          personalData={personalData}
+          onChange={handlePersonalOnChange}
+        />
+        <EducationListEdit
+          eduData={educationList}
+          onUpdate={handleEducationUpdate}
+          onDelete={handleEducationDelete}
+          onAdd={handleEducationAdd}
+        />
+      </section>
+      <section className="preview">
+        <PreviewHeader {...personalData} />
+        <EducationPreview eduData={educationList} />
+      </section>
+    </main>
   );
 }
 

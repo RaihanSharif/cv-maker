@@ -121,8 +121,4 @@ button:focus-visible {
     background-color: #f9f9f9;
     border-color: #cacbdb;
   }
-  .sidebar section,
-  .preview {
-    background-color: #ffff;
-  }
 }

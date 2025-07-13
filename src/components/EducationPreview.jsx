@@ -1,16 +1,22 @@
 //TODO: Live preview of education
 export default function EducationPreview({ eduData }) {
   return (
-    <section className="education-preview">
-      <h1>Education</h1>
+    <section className="education-preview experience-category">
+      <h1 className="experiece-category-heading">Education</h1>
       <div className="edcation-item">
         {eduData.map((item) => {
           return (
-            <div key={item.id}>
+            <div key={item.id} className="experience-instance">
               <h2>{item.course}</h2>
-              <h3>{item.school}</h3>
-              <p>
-                {item.start} - {item.end} || {item.grade}
+              <div className="experience-subheading">
+                <h3>{item.school}</h3>
+                <div>
+                  <span>Start: {item.start}</span> |{" "}
+                  <span>End: {item.end}</span>
+                </div>
+              </div>
+              <p className="grade">
+                <span>Grade:</span> {item.grade}
               </p>
               <p>{item.description}</p>
             </div>

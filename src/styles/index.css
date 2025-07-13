@@ -13,6 +13,63 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Modern CSS Reset by Andy Bell - https://piccalil.li/blog/a-modern-css-reset/ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#app {
+  isolation: isolate;
+}
+
+/* reset finished */
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -35,7 +92,7 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid darkgrey;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -62,6 +119,7 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+    border-color: #cacbdb;
   }
   .sidebar section,
   .preview {

@@ -6,8 +6,14 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
   const [selectedEdu, setSelectedEdu] = useState(null);
   const [showEmptyEduForm, setShowEmptyEduForm] = useState(false);
   return (
-    <section className="education-btns">
-      <h2>Education</h2>
+    <section className="education-edit">
+      <h2>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <title>school</title>
+          <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
+        </svg>
+        Education
+      </h2>
       <ul>
         {eduData.map((item) => {
           return (
@@ -138,23 +144,24 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
           defaultValue={educationItem?.description}
         />
       </label>
-      <button type="reset">Reset</button>
-      <button type="submit">Submit</button>
-
-      {onDelete && (
-        <button
-          className="del-education-item"
-          onClick={(e) => {
-            console.log(
-              `in delete button: deleting item id: ${educationItem?.id}`
-            );
-            e.preventDefault();
-            onDelete(educationItem?.id);
-          }}
-        >
-          Delete
-        </button>
-      )}
+      <div class="form-btns">
+        <button type="reset">Reset</button>
+        <button type="submit">Submit</button>
+        {onDelete && (
+          <button
+            className="del-education-item"
+            onClick={(e) => {
+              console.log(
+                `in delete button: deleting item id: ${educationItem?.id}`
+              );
+              e.preventDefault();
+              onDelete(educationItem?.id);
+            }}
+          >
+            Delete
+          </button>
+        )}
+      </div>
     </form>
   );
 }

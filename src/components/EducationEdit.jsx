@@ -5,6 +5,8 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
   // make the button of the currently selected education a different colour
   const [selectedEdu, setSelectedEdu] = useState(null);
   const [showEmptyEduForm, setShowEmptyEduForm] = useState(false);
+  const [isActive, setIsactive] = useState(null);
+
   return (
     <section className="education-edit">
       <h2>
@@ -21,11 +23,14 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
               {/* passing an anonymous function like this allows passing of both
               the event object and item id */}
               <button
+                className={isActive === item.id ? "active" : "inactive"}
                 key={item.id}
                 onClick={() => {
                   setSelectedEdu(item.id);
+                  setIsactive(item.id);
                   if (selectedEdu == item.id) {
                     setSelectedEdu(null);
+                    setIsactive(null);
                   }
                 }}
               >

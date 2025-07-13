@@ -34,7 +34,7 @@ textarea {
   gap: 2rem;
 }
 
-.sidebar section {
+.sidebar-section {
   border: 1px solid darkgrey;
   border-radius: 10px;
   background-color: #242424;
@@ -44,7 +44,7 @@ textarea {
   gap: 1rem;
 }
 
-.sidebar section ul {
+.sidebar-section ul {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -56,17 +56,17 @@ textarea {
   gap: 1rem;
 }
 
-.education-edit h2 {
+.sidebar-section h2 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.education-edit h2 > svg {
+.sidebar-section h2 > svg {
   width: 2rem;
 }
 
-.education-edit button {
+.sidebar-section button {
   width: 100%;
   font-weight: bold;
 }
@@ -132,20 +132,22 @@ textarea {
   margin-bottom: 2rem;
 }
 
+.experience-instance h2 {
+  border-bottom: 1px solid darkgray;
+}
+
 .experience-subheading {
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .grade {
-  margin-bottom: 0.5rem;
+  font-weight: normal;
+  font-style: italic;
 }
 
-.grade span {
-  font-weight: bold;
-}
 /* preview styles end */
 
 /* .logo {

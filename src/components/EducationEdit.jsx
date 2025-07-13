@@ -1,19 +1,16 @@
 import { useState } from "react";
+import Icon from "@mdi/react";
+import { mdiSchool } from "@mdi/js";
 
 function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
-  // something to track the currently selected education entry
-  // make the button of the currently selected education a different colour
   const [selectedEdu, setSelectedEdu] = useState(null);
   const [showEmptyEduForm, setShowEmptyEduForm] = useState(false);
   const [isActive, setIsactive] = useState(null);
 
   return (
-    <section className="education-edit">
+    <section className="education-edit sidebar-section">
       <h2>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-          <title>school</title>
-          <path d="M12,3L1,9L12,15L21,10.09V17H23V9M5,13.18V17.18L12,21L19,17.18V13.18L12,17L5,13.18Z" />
-        </svg>
+        <Icon path={mdiSchool} size={1.5} />
         Education
       </h2>
       <ul>
@@ -149,7 +146,7 @@ function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
           defaultValue={educationItem?.description}
         />
       </label>
-      <div class="form-btns">
+      <div className="form-btns">
         <button type="reset">Reset</button>
         <button type="submit">Submit</button>
         {onDelete && (

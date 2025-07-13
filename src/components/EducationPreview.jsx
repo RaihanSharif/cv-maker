@@ -9,15 +9,14 @@ export default function EducationPreview({ eduData }) {
             <div key={item.id} className="experience-instance">
               <h2>{item.course}</h2>
               <div className="experience-subheading">
-                <h3>{item.school}</h3>
+                <h3>
+                  {item.school} - <span className="grade">{item.grade}</span>
+                </h3>
                 <div>
                   <span>Start: {item.start}</span> |{" "}
                   <span>End: {item.end}</span>
                 </div>
               </div>
-              <p className="grade">
-                <span>Grade:</span> {item.grade}
-              </p>
               <p>{item.description}</p>
             </div>
           );

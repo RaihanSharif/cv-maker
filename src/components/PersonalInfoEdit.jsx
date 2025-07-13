@@ -2,7 +2,7 @@
 
 export default function PersonalInfoEdit({ personalData, onChange }) {
   return (
-    <section className="personal-info-edit">
+    <section className="personal-info-edit sidebar-section">
       <h2>Personal Details</h2>
       <form action="" className="personal-info-form">
         <label htmlFor="name">

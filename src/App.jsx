@@ -4,6 +4,7 @@ import PersonalInfoEdit from "./components/PersonalInfoEdit";
 import { EducationListEdit } from "./components/EducationEdit";
 import PreviewHeader from "./components/PreviewHeader";
 import EducationPreview from "./components/EducationPreview";
+import { WorkListEdit } from "./components/WorkEdit";
 
 const dummyEduData = [
   {
@@ -46,6 +47,45 @@ const dummyEduData = [
   },
 ];
 
+const dummyWorkData = [
+  {
+    id: crypto.randomUUID(),
+    org: "Google",
+    role: "junior dev",
+    start: "2016-09",
+    end: "2020-06",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+    Quisque eros velit, ultricies vel lectus vel, tempor ornare enim. \
+    Vivamus non sapien odio. Interdum et malesuada fames ac ante ipsum \
+    primis in faucibus. Praesent mattis magna tincidunt, consequat diam",
+  },
+  {
+    id: crypto.randomUUID(),
+    org: "Odin Project",
+    role: "contributor",
+    start: "2024-07",
+    end: "2020-06",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+    Quisque eros velit, ultricies vel lectus vel, tempor ornare enim. \
+    Vivamus non sapien odio. Interdum et malesuada fames ac ante ipsum \
+    primis in faucibus. Praesent mattis magna tincidunt, consequat diam",
+  },
+  {
+    id: crypto.randomUUID(),
+    org: "Unnamed School",
+    role: "ICT Teacher",
+    start: "2020-09",
+    end: "2024-06",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+    Quisque eros velit, ultricies vel lectus vel, tempor ornare enim. \
+    Vivamus non sapien odio. Interdum et malesuada fames ac ante ipsum \
+    primis in faucibus. Praesent mattis magna tincidunt, consequat diam",
+  },
+];
+
 function App() {
   const [personalData, setPersonalData] = useState({
     name: "",
@@ -54,6 +94,7 @@ function App() {
     website: "",
   });
   const [educationList, setEducationList] = useState(dummyEduData);
+  const [workList, setWorkList] = useState(dummyWorkData);
 
   // passed to PersonalInfoEdit component
   function handlePersonalOnChange(e) {
@@ -91,10 +132,37 @@ function App() {
     setEducationList((prev) => [...prev, newEdu]);
   }
 
+  function handleWorkUpdate(event, key) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const workObj = Object.fromEntries(formData);
+    workObj.id = key;
+    const workIndex = workList.findIndex((item) => item.id === key);
+
+    setWorkList(workList.toSpliced(workIndex, 1, workObj));
+  }
+
+  function handleWorkDelete(objectId) {
+    const indexOfDelItem = workList.findIndex((item) => item.id === objectId);
+    setWorkList(workList.toSpliced(indexOfDelItem, 1));
+  }
+
+  function handleWorkAdd(e) {
+    e.preventDefault();
+    const uuid = crypto.randomUUID(); //works
+
+    const formData = new FormData(e.target); // works
+    console.log(formData);
+    const newWork = Object.fromEntries(formData);
+    newWork.id = uuid;
+    console.log(newWork);
+    setWorkList((prev) => [...prev, newWork]);
+  }
+
   return (
     <main className="app">
       <section className="sidebar">
-        <section className="export">
+        <section className="export sidebar-section">
           <button>Download PDF</button>
           <button>print</button>
         </section>
@@ -107,6 +175,13 @@ function App() {
           onUpdate={handleEducationUpdate}
           onDelete={handleEducationDelete}
           onAdd={handleEducationAdd}
+        />
+
+        <WorkListEdit
+          workData={workList}
+          onUpdate={handleWorkUpdate}
+          onDelete={handleWorkDelete}
+          onAdd={handleWorkAdd}
         />
       </section>
       <section className="preview">

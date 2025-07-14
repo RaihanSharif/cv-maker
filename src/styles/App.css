@@ -204,6 +204,15 @@ textarea {
   .preview {
     background-color: #ffff;
   }
+
+  input,
+  textarea {
+    font-weight: 400;
+    border: 1px solid #a0a0a0;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: #21354722;
+  }
 }
 
 /* TODO: delete this later and do style properly */

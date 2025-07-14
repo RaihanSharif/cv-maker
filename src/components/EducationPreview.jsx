@@ -1,4 +1,3 @@
-//TODO: Live preview of education
 export default function EducationPreview({ eduData }) {
   return (
     <section className="education-preview experience-category">

@@ -1,5 +1,3 @@
-// TODO: Client side input validation does not work, e.g. email can "beasdf"
-
 export default function PersonalInfoEdit({ personalData, onChange }) {
   return (
     <section className="personal-info-edit sidebar-section">

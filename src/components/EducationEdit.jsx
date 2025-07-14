@@ -17,8 +17,6 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
         {eduData.map((item) => {
           return (
             <li key={item.id}>
-              {/* passing an anonymous function like this allows passing of both
-              the event object and item id */}
               <button
                 className={isActive === item.id ? "active" : "inactive"}
                 key={item.id}
@@ -37,6 +35,7 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
               {selectedEdu === item.id && (
                 <EducationItemEdit
                   educationItem={item}
+                  // using arrow function to pass both event, and item id to event handler
                   onSubmit={(e) => onUpdate(e, item.id)}
                   onDelete={onDelete}
                 />
@@ -67,18 +66,9 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
   );
 }
 
+// if educationItem is provided, renders a pre-populated form,
+// if not, renders blank form
 function EducationItemEdit({ educationItem, onSubmit, onDelete }) {
-  // destructuring the educationItem like this allows default values to be blank if
-  /// no educationItem props is present
-  // const {
-  //   school = "",
-  //   course = "",
-  //   grade = "",
-  //   start = "",
-  //   end = "",
-  //   description = "",
-  // } = educationItem;
-
   return (
     <form className="education-edit-form" onSubmit={onSubmit}>
       <label htmlFor="school">

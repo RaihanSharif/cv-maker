@@ -83,7 +83,7 @@ textarea {
 .export {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 /* preview styles */
@@ -126,6 +126,7 @@ textarea {
   background-color: lightgrey;
   padding: 0.2rem;
   margin-bottom: 0.5rem;
+  color: black;
 }
 
 .experience-instance {

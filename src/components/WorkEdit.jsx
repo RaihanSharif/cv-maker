@@ -17,11 +17,11 @@ function WorkListEdit({ workData, onUpdate, onDelete, onAdd }) {
         {workData.map((item) => {
           return (
             <li key={item.id}>
-              {/* passing an anonymous function like this allows passing of both
-              the event object and item id */}
               <button
                 className={isActive === item.id ? "active" : "inactive"}
                 key={item.id}
+                // passing an anonymous function like this allows passing of both
+                // the event object and item id
                 onClick={() => {
                   setSelectedWork(item.id);
                   setIsactive(item.id);
@@ -33,7 +33,7 @@ function WorkListEdit({ workData, onUpdate, onDelete, onAdd }) {
               >
                 {item.role}
               </button>
-              {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
+              {/* returns a prefilled form with the data of item that has the id */}
               {selectedWork === item.id && (
                 <WorkItemEdit
                   workItem={item}

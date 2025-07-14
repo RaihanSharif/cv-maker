@@ -89,28 +89,27 @@ const dummyWorkData = [
 
 function App() {
   const [personalData, setPersonalData] = useState({
-    name: "Razz",
-    email: "Shazzman",
+    name: "Razz Shazzman",
+    email: "shazzman@gmail.com",
     phone: "0345-123-2341",
     website: "noobdev.com",
   });
   const [educationList, setEducationList] = useState(dummyEduData);
   const [workList, setWorkList] = useState(dummyWorkData);
 
-  // passed to PersonalInfoEdit component
   function handlePersonalOnChange(e) {
     const { name, value } = e.target;
     setPersonalData((prev) => ({ ...prev, [name]: value }));
   }
 
-  // education button click -> show form -> submit form -> call this
   function handleEducationUpdate(event, key) {
     event.preventDefault();
+    // collect form data, attach correct ID to it,
+    // toSpliced returns a copy, preserving immutability of educationList
     const formData = new FormData(event.target);
     const eduObj = Object.fromEntries(formData);
     eduObj.id = key;
     const eduIndex = educationList.findIndex((item) => item.id === key);
-
     setEducationList(educationList.toSpliced(eduIndex, 1, eduObj));
   }
 
@@ -118,6 +117,8 @@ function App() {
     const indexOfDelItem = educationList.findIndex(
       (item) => item.id === objectId
     );
+    // returns a COPY of the original array, minus the deleted item.
+    // preserves immutability
     setEducationList(educationList.toSpliced(indexOfDelItem, 1));
   }
 

@@ -2,7 +2,7 @@
 export default function EducationPreview({ eduData }) {
   return (
     <section className="education-preview experience-category">
-      <h1 className="experiece-category-heading">Education</h1>
+      <h1 className="experience-category-heading">Education</h1>
       <div className="edcation-item">
         {eduData.map((item) => {
           return (

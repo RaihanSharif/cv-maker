@@ -31,7 +31,7 @@ function WorkListEdit({ workData, onUpdate, onDelete, onAdd }) {
                   }
                 }}
               >
-                {item.role} id: {item.id.slice(0, 3)}
+                {item.role}
               </button>
               {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
               {selectedWork === item.id && (

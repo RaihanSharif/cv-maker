@@ -31,7 +31,7 @@ function EducationListEdit({ eduData, onUpdate, onDelete, onAdd }) {
                   }
                 }}
               >
-                {item.course} id: {item.id.slice(0, 3)}
+                {item.course}
               </button>
               {/* conditional rendering: if selectedItem is the current itemID, then render a form */}
               {selectedEdu === item.id && (

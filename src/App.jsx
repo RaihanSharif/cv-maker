@@ -5,6 +5,7 @@ import { EducationListEdit } from "./components/EducationEdit";
 import PreviewHeader from "./components/PreviewHeader";
 import EducationPreview from "./components/EducationPreview";
 import { WorkListEdit } from "./components/WorkEdit";
+import WorkPreview from "./components/WorkPreview";
 
 const dummyEduData = [
   {
@@ -187,6 +188,7 @@ function App() {
       <section className="preview" id="preview">
         <PreviewHeader {...personalData} />
         <EducationPreview eduData={educationList} />
+        <WorkPreview workData={workList} />
       </section>
     </main>
   );
